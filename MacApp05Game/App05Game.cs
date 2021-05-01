@@ -128,29 +128,27 @@ namespace MacApp05Game
             {
                 Direction = new Vector2(-1, 0),
                 Speed = 100,
-                Scale = 0.2f,
+                Scale = 0.1f,
                 Rotation = MathHelper.ToRadians(3),
                 RotationSpeed = 2f,
             };
+        }
+    /// <summary>
+    /// This is a Sprite that can be controlled by a
+    /// player using Rotate Left = A, Rotate Right = D, 
+    /// Forward = Space
+    /// </summary>
+    private void SetupSpaceShip()
+    {
+        Texture2D ship = Content.Load<Texture2D>(
+           "images/GreenShip");
 
-    }
-
-        /// <summary>
-        /// This is a Sprite that can be controlled by a
-        /// player using Rotate Left = A, Rotate Right = D, 
-        /// Forward = Space
-        /// </summary>
-        private void SetupSpaceShip()
+        shipSprite = new PlayerSprite(ship, 200, 500)
         {
-            Texture2D ship = Content.Load<Texture2D>(
-               "images/GreenShip");
-
-            shipSprite = new PlayerSprite(ship, 200, 500)
-            {
-                Direction = new Vector2(1, 0),
-                Speed = 200,
-                DirectionControl = DirectionControl.Rotational
-            };
+            Direction = new Vector2(1, 0),
+            Speed = 200,
+            DirectionControl = DirectionControl.Rotational
+        };
     }
 
 
