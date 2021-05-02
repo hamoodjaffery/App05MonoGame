@@ -35,11 +35,14 @@ namespace MacApp05Game
 
         private SpriteFont arialFont;
         private SpriteFont calibriFont;
+        private SpriteFont VerdanaFont;
 
         private Texture2D backgroundImage;
         private SoundEffect flameEffect;
+        private SoundEffect DiamondpickupEffect;
 
         private readonly CoinsController coinsController;
+        private readonly DiamondsController diamondsController;
 
         private PlayerSprite shipSprite;
         private Sprite asteroidSprite;
@@ -59,6 +62,7 @@ namespace MacApp05Game
             IsMouseVisible = true;
 
             coinsController = new CoinsController();
+            diamondsController = new DiamondsController();
         }
 
         /// <summary>
@@ -88,7 +92,7 @@ namespace MacApp05Game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             backgroundImage = Content.Load<Texture2D>(
-                "images/green_background720p");
+                "images/sunny");
 
             // Load Music and SoundEffects
 
@@ -99,7 +103,8 @@ namespace MacApp05Game
             // Load Fonts
 
             arialFont = Content.Load<SpriteFont>("arial");
-            calibriFont = Content.Load<SpriteFont>("Verdana");
+            calibriFont = Content.Load<SpriteFont>("calibri");
+            VerdanaFont = Content.Load<SpriteFont>("Verdana");
 
             // suitable for asteroids type game
 
@@ -113,6 +118,9 @@ namespace MacApp05Game
 
             Texture2D coinSheet = Content.Load<Texture2D>("images/coin_copper");
             coinsController.CreateCoin(graphicsDevice, coinSheet);
+
+            Texture2D diamondSheet = Content.Load<Texture2D>("images/diamondblue");
+            diamondsController.CreateDiamond(graphicsDevice, diamondSheet);
         }
 
         /// <summary>
