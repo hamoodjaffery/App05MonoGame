@@ -56,11 +56,6 @@
 /processorParam:Quality=Best
 /build:audio/scream01.wav
 
-#begin images/.DS_Store
-/importer:
-/processor:
-/build:images/.DS_Store
-
 #begin images/asteroid-1.png
 /importer:TextureImporter
 /processor:TextureProcessor
