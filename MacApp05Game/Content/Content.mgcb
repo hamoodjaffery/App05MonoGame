@@ -169,18 +169,6 @@
 /processorParam:TextureFormat=Color
 /build:images/diamond blue.png
 
-#begin images/diamond blue1.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:images/diamond blue1.png
-
 #begin images/diamond red.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -192,18 +180,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/diamond red.png
-
-#begin images/diamond red2.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:images/diamond red2.png
 
 #begin images/diamond violet.png
 /importer:TextureImporter
@@ -217,18 +193,6 @@
 /processorParam:TextureFormat=Color
 /build:images/diamond violet.png
 
-#begin images/diamond violet3.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:images/diamond violet3.png
-
 #begin images/diamond.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -240,18 +204,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/diamond.png
-
-#begin images/diamond4.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:images/diamond4.png
 
 #begin images/game_background_4.png
 /importer:TextureImporter
