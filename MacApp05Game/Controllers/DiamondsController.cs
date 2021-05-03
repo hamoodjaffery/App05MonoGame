@@ -1,7 +1,9 @@
 ﻿using MacApp05Game.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 
@@ -24,39 +26,72 @@ namespace MacApp05Game.Controllers
     /// </authors>
     public class DiamondsController
     {
+        public const float MaxTime = 3.0f;
+
+        private Random generator = new Random();
+
         private SoundEffect diamondEffect;
 
-        private readonly List<AnimatedSprite> Diamonds;
+        private readonly List<Sprite> Diamonds;
+
+        public Texture2D redDiamond { get; set; }
+        public Texture2D blueDiamond { get; set; }
+        public Texture2D violetDiamond { get; set; }
+
+        private Texture2D diamondImage;
+
+        private ContentManager content;
+
+        private double timer;
 
         public DiamondsController()
         {
-            Diamonds = new List<AnimatedSprite>();
+            Diamonds = new List<Sprite>();
         }
+
         /// <summary>
         /// Create an animated sprite of a copper coin
         /// which could be collected by the player for a score
         /// </summary>
-        public void CreateDiamond(GraphicsDevice graphics, Texture2D Sheet)
+        public void CreateDiamonds(GraphicsDevice graphics, ContentManager content)
         {
-            diamondEffect = SoundController.GetSoundEffect("Diamondpickup");
-            Texture2D diamondSheet = null;
-            Animation animation = new Animation("diamond", diamondSheet, 8);
+            //diamondEffect = SoundController.GetSoundEffect("Diamondpickup");
 
-            AnimatedSprite diamond = new AnimatedSprite()
+            this.content = content;
+
+            CreateDiamond(DiamondColours.red);
+            CreateDiamond(DiamondColours.blue);
+            CreateDiamond(DiamondColours.violet);
+
+        }
+
+        private void CreateDiamond(DiamondColours colour)
+        {
+            if(colour == DiamondColours.red)
             {
-                Animation = animation,
-                Image = animation.SetMainFrame(graphics),
-                Scale = 2.0f,
-                Position = new Vector2(600, 100),
-                Speed = 0,
-            };
+                diamondImage = content.Load<Texture2D>("images/diamond red");
+            } 
+            else if (colour == DiamondColours.blue)
+            {
+                diamondImage = content.Load<Texture2D>("images/diamond blue");
+            }
+            else if (colour == DiamondColours.violet)
+            {
+                diamondImage = content.Load<Texture2D>("images/diamond violet");
+            }
 
-            Diamonds.Add(diamond);
+            int x = generator.Next(1000) + 100;
+            int y = generator.Next(520) + 100;
+
+            Sprite sprite = new Sprite(diamondImage, x, y);
+            sprite.Scale = 0.05f;
+
+            Diamonds.Add(sprite);
         }
 
         public void HasCollided(AnimatedPlayer player)
         {
-            foreach (AnimatedSprite diamond in Diamonds)
+            foreach (Sprite diamond in Diamonds)
             {
                 if (diamond.HasCollided(player) && diamond.IsAlive)
                 {
@@ -69,9 +104,17 @@ namespace MacApp05Game.Controllers
             }
         }
 
+        /// <summary>
+        /// When the timer has reached zero from say 2 seconds
+        /// then create new diamond of random colour.
+        /// </summary>
+        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
-            foreach (AnimatedSprite diamond in Diamonds)
+            // decrease timer by gametime
+            // when = 0 call create diamond
+
+            foreach (Sprite diamond in Diamonds)
             {
                 diamond.Update(gameTime);
             }
@@ -79,7 +122,7 @@ namespace MacApp05Game.Controllers
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (AnimatedSprite diamond in Diamonds)
+            foreach (Sprite diamond in Diamonds)
             {
                 diamond.Draw(spriteBatch);
             }

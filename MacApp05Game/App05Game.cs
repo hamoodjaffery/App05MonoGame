@@ -16,7 +16,7 @@ namespace MacApp05Game
     /// random coins and the enemy tries to catch the player.
     /// </summary>
     /// <authors>
-    /// Derek Peacock & Andrei Cruceru
+    /// Hamood
     /// </authors>
     public class App05Game : Game
     {
@@ -117,8 +117,7 @@ namespace MacApp05Game
             //Texture2D coinSheet = Content.Load<Texture2D>("images/coin_copper");
             //coinsController.CreateCoin(graphicsDevice, coinSheet);
 
-            Texture2D diamondSheet = Content.Load<Texture2D>("images/diamond");
-            diamondsController.CreateDiamond(graphicsDevice, diamondSheet);
+            diamondsController.CreateDiamonds(graphicsDevice, Content);
         }
 
         /// <summary>
@@ -256,8 +255,8 @@ namespace MacApp05Game
                 enemySprite.IsActive = false;
             }
 
-            coinsController.Update(gameTime);
-            coinsController.HasCollided(playerSprite);
+            diamondsController.Update(gameTime);
+            diamondsController.HasCollided(playerSprite);
 
             base.Update(gameTime);
         }
@@ -275,15 +274,11 @@ namespace MacApp05Game
 
             spriteBatch.Draw(backgroundImage, Vector2.Zero, Color.White);
 
-            // Draw asteroids game
-
-            shipSprite.Draw(spriteBatch);
-            asteroidSprite.Draw(spriteBatch);
 
             // Draw Chase game
 
             playerSprite.Draw(spriteBatch);
-            coinsController.Draw(spriteBatch);
+            diamondsController.Draw(spriteBatch);
             enemySprite.Draw(spriteBatch);
 
             DrawGameStatus(spriteBatch);
