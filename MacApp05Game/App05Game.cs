@@ -34,8 +34,7 @@ namespace MacApp05Game
         private SpriteBatch spriteBatch;
 
         private SpriteFont arialFont;
-        private SpriteFont calibriFont;
-        private SpriteFont VerdanaFont;
+        private SpriteFont verdanaFont;
 
         private Texture2D backgroundImage;
         private SoundEffect flameEffect;
@@ -103,8 +102,7 @@ namespace MacApp05Game
             // Load Fonts
 
             arialFont = Content.Load<SpriteFont>("arial");
-            calibriFont = Content.Load<SpriteFont>("calibri");
-            VerdanaFont = Content.Load<SpriteFont>("Verdana");
+            verdanaFont = Content.Load<SpriteFont>("verdana");
 
             // suitable for asteroids type game
 
@@ -330,16 +328,16 @@ namespace MacApp05Game
             string app = "App05: MonogGame";
             string module = "BNU CO453-2020";
 
-            Vector2 namesSize = calibriFont.MeasureString(names);
-            Vector2 appSize = calibriFont.MeasureString(app);
+            Vector2 namesSize = verdanaFont.MeasureString(names);
+            Vector2 appSize = verdanaFont.MeasureString(app);
 
             Vector2 bottomCentre = new Vector2((HD_Width - namesSize.X)/ 2, HD_Height - margin);
             Vector2 bottomLeft = new Vector2(margin, HD_Height - margin);
             Vector2 bottomRight = new Vector2(HD_Width - appSize.X - margin, HD_Height - margin);
 
-            spriteBatch.DrawString(calibriFont, names, bottomCentre, Color.Yellow);
-            spriteBatch.DrawString(calibriFont, module, bottomLeft, Color.Yellow);
-            spriteBatch.DrawString(calibriFont, app, bottomRight, Color.Yellow);
+            spriteBatch.DrawString(verdanaFont, names, bottomCentre, Color.Yellow);
+            spriteBatch.DrawString(verdanaFont, module, bottomLeft, Color.Yellow);
+            spriteBatch.DrawString(verdanaFont, app, bottomRight, Color.Yellow);
 
         }
     }

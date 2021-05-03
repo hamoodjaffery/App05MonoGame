@@ -39,6 +39,7 @@ namespace MacApp05Game.Controllers
         public void CreateDiamond(GraphicsDevice graphics, Texture2D Sheet)
         {
             diamondEffect = SoundController.GetSoundEffect("Diamondpickup");
+            Texture2D diamondSheet = null;
             Animation animation = new Animation("diamond", diamondSheet, 8);
 
             AnimatedSprite diamond = new AnimatedSprite()
