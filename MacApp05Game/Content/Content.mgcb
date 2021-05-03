@@ -32,12 +32,6 @@
 /processorParam:Quality=Best
 /build:audio/Coins.wav
 
-#begin audio/Diamondpickup.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:audio/Diamondpickup.wav
-
 #begin audio/FallingRock.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

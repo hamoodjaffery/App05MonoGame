@@ -38,7 +38,7 @@ namespace MacApp05Game
 
         private Texture2D backgroundImage;
         private SoundEffect flameEffect;
-        private SoundEffect DiamondpickupEffect;
+        
 
         private readonly CoinsController coinsController;
         private readonly DiamondsController diamondsController;
@@ -114,10 +114,10 @@ namespace MacApp05Game
             SetupAnimatedPlayer();
             SetupEnemy();
 
-            Texture2D coinSheet = Content.Load<Texture2D>("images/coin_copper");
-            coinsController.CreateCoin(graphicsDevice, coinSheet);
+            //Texture2D coinSheet = Content.Load<Texture2D>("images/coin_copper");
+            //coinsController.CreateCoin(graphicsDevice, coinSheet);
 
-            Texture2D diamondSheet = Content.Load<Texture2D>("images/diamondblue");
+            Texture2D diamondSheet = Content.Load<Texture2D>("images/diamond");
             diamondsController.CreateDiamond(graphicsDevice, diamondSheet);
         }
 
