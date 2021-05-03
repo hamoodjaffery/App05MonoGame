@@ -91,7 +91,7 @@ namespace MacApp05Game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             backgroundImage = Content.Load<Texture2D>(
-                "images/sunny");
+                "images/green_background720p");
 
             // Load Music and SoundEffects
 

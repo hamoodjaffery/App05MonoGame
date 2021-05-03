@@ -73,18 +73,18 @@ namespace MacApp05Game.Controllers
             } 
             else if (colour == DiamondColours.blue)
             {
-                diamondImage = content.Load<Texture2D>("images/diamond blue");
+                diamondImage = content.Load<Texture2D>("images/diamond violet");
             }
             else if (colour == DiamondColours.violet)
             {
-                diamondImage = content.Load<Texture2D>("images/diamond violet");
+                diamondImage = content.Load<Texture2D>("images/diamond blue");
             }
 
             int x = generator.Next(1000) + 100;
             int y = generator.Next(520) + 100;
 
             Sprite sprite = new Sprite(diamondImage, x, y);
-            sprite.Scale = 0.05f;
+            sprite.Scale = 0.5f;
 
             Diamonds.Add(sprite);
         }
@@ -95,7 +95,7 @@ namespace MacApp05Game.Controllers
             {
                 if (diamond.HasCollided(player) && diamond.IsAlive)
                 {
-                    diamondEffect.Play();
+                    //diamondEffect.Play();
 
                     diamond.IsActive = false;
                     diamond.IsAlive = false;
