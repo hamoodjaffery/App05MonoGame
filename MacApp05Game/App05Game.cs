@@ -42,6 +42,7 @@ namespace MacApp05Game
 
         private readonly CoinsController coinsController;
         private readonly DiamondsController diamondsController;
+        private readonly BulletController bulletController;
 
         private PlayerSprite shipSprite;
         private Sprite asteroidSprite;
@@ -280,6 +281,7 @@ namespace MacApp05Game
             playerSprite.Draw(spriteBatch);
             diamondsController.Draw(spriteBatch);
             enemySprite.Draw(spriteBatch);
+            BulletController.Draw(spriteBatch);
 
             DrawGameStatus(spriteBatch);
             DrawGameFooter(spriteBatch);
@@ -319,9 +321,9 @@ namespace MacApp05Game
         {
             int margin = 20;
 
-            string names = "Derek & Andrei";
+            string names = "Hamood Jaffery";
             string app = "App05: MonogGame";
-            string module = "BNU CO453-2020";
+            string module = "BNU CO453-2021";
 
             Vector2 namesSize = verdanaFont.MeasureString(names);
             Vector2 appSize = verdanaFont.MeasureString(app);

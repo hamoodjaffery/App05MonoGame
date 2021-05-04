@@ -11,6 +11,7 @@ namespace MacApp05Game.Controllers
 {
     public enum DiamondColours
     {
+        grey = 50,
         blue = 100,
         red = 200,
         violet = 500
@@ -27,6 +28,7 @@ namespace MacApp05Game.Controllers
     public class DiamondsController
     {
         public const float MaxTime = 3.0f;
+        public const float TimeofCollision = 3f;
 
         private Random generator = new Random();
 
@@ -34,6 +36,7 @@ namespace MacApp05Game.Controllers
 
         private readonly List<Sprite> Diamonds;
 
+        public Texture2D greyDiamond { get; set; }
         public Texture2D redDiamond { get; set; }
         public Texture2D blueDiamond { get; set; }
         public Texture2D violetDiamond { get; set; }
@@ -79,12 +82,16 @@ namespace MacApp05Game.Controllers
             {
                 diamondImage = content.Load<Texture2D>("images/diamond blue");
             }
+            else if (colour == DiamondColours.grey)
+            {
+                diamondImage = content.Load<Texture2D>("images/diamond");
+            }
 
             int x = generator.Next(1000) + 100;
             int y = generator.Next(520) + 100;
 
             Sprite sprite = new Sprite(diamondImage, x, y);
-            sprite.Scale = 0.5f;
+            sprite.Scale = 0.9f;
 
             Diamonds.Add(sprite);
         }
@@ -100,6 +107,8 @@ namespace MacApp05Game.Controllers
                     diamond.IsActive = false;
                     diamond.IsAlive = false;
                     diamond.IsVisible = false;
+
+                    
                 }
             }
         }
