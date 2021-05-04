@@ -91,7 +91,7 @@ namespace MacApp05Game.Controllers
 
         internal static void Draw(SpriteBatch spriteBatch)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }
