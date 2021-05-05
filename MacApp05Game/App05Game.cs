@@ -128,7 +128,7 @@ namespace MacApp05Game
                 Scale = 2.0f,
 
                 Position = new Vector2(200, 200),
-                Speed = 200,
+                Speed = 210,
                 Direction = new Vector2(1, 0),
 
                 Rotation = MathHelper.ToRadians(0),
@@ -163,7 +163,7 @@ namespace MacApp05Game
 
                 Position = new Vector2(1000, 200),
                 Direction = new Vector2(-1, 0),
-                Speed = 0.5f,
+                Speed = 0.9f,
 
                 Rotation = MathHelper.ToRadians(0),
             };
@@ -278,20 +278,20 @@ namespace MacApp05Game
         /// </summary>
         public void DrawGameStatus(SpriteBatch spriteBatch)
         {
-            //Vector2 topLeft = new Vector2(4, 4);
-            //string status = $"Score = {playerSprite.score:##0}";
+            Vector2 topLeft = new Vector2(4, 4);
+            string status = $"Score = {playerSprite.score:##0}";
 
-            //spriteBatch.DrawString(arialFont, status, topLeft, Color.White);
+            spriteBatch.DrawString(arialFont, status, topLeft, Color.White);
 
             string game = "Diamond Chase";
             Vector2 gameSize = arialFont.MeasureString(game);
             Vector2 topCentre = new Vector2((HD_Width / 2 - gameSize.X / 2), 4);
             spriteBatch.DrawString(arialFont, game, topCentre, Color.White);
 
-            //string healthText = $"Health = {playerSprite.health}%";
-            //Vector2 healthSize = arialFont.MeasureString(healthText);
-            //Vector2 topRight = new Vector2(HD_Width - (healthSize.X + 4), 4);
-            //spriteBatch.DrawString(arialFont, healthText, topRight, Color.White);
+            string healthText = $"Health = {playerSprite.health}%";
+            Vector2 healthSize = arialFont.MeasureString(healthText);
+            Vector2 topRight = new Vector2(HD_Width - (healthSize.X + 4), 4);
+            spriteBatch.DrawString(arialFont, healthText, topRight, Color.White);
 
         }
 

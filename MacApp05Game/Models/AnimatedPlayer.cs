@@ -21,7 +21,8 @@ namespace MacApp05Game.Models
 
 
         private readonly MovementController movement;
-
+        internal readonly object score;
+        internal readonly object health;
 
         public AnimatedPlayer() : base()
         {
