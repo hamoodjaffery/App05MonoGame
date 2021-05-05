@@ -199,7 +199,8 @@ namespace MacApp05Game
             diamondsController.Update(gameTime);
             diamondsController.HasCollided(playerSprite);
             bulletController.UpdateBullets(gameTime);
-            if (bulletController.HasCollided(enemySprite)) {
+            if (bulletController.HasCollided(enemySprite))
+            {
                 SetupEnemy();
             }
 
