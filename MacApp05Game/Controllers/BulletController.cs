@@ -4,7 +4,6 @@ using System.Text;
 using MacApp05Game.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace MacApp05Game.Controllers
@@ -24,12 +23,10 @@ namespace MacApp05Game.Controllers
         /// <summary>
         /// Create a list of bullets and store the bullet image
         /// </summary>
-        public BulletController(ContentManager Content)
+        public BulletController(Texture2D bulletTexture)
         {
             Bullets = new List<Bullet>();
-            Texture2D bullet = Content.Load<Texture2D>(
-          "images/bullet");
-            this.BulletTexture = bullet;
+            this.BulletTexture = bulletTexture;
         }
 
         public void UpdateBullets(GameTime gameTime)
@@ -73,7 +70,7 @@ namespace MacApp05Game.Controllers
         /// removed from the screen. The bullet will
         /// also disappear.
         /// </summary>
-        public bool HasCollided(AnimatedSprite enemy)
+        public void HasCollided(AnimatedSprite enemy)
         {
             foreach (Bullet bullet in Bullets)
             {
@@ -87,11 +84,14 @@ namespace MacApp05Game.Controllers
                     enemy.IsVisible = false;
 
                     bullet.IsVisible = false;
-                    return true;
                 }
             }
-            return false;
 
+        }
+
+        internal static void Draw(SpriteBatch spriteBatch)
+        {
+            //throw new NotImplementedException();
         }
     }
 }

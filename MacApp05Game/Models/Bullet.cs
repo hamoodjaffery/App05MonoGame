@@ -16,7 +16,7 @@ namespace MacApp05Game.Models
 
         public float Timer { get; set; }
 
-        public float LifeSpan { get; set; }
+        public float LifeSpan { get; set; } = 2.0f;
 
         public Bullet(Texture2D texture) : base(texture, 0, 0) { }
 
@@ -25,18 +25,17 @@ namespace MacApp05Game.Models
             RotationVelocity = 3f;
             LinearVelocity = 4f;
 
+            Timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (Timer > LifeSpan)
             {
-                Timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (Timer > LifeSpan)
-                {
-                    IsVisible = false;
-                    IsActive = false;
-                    IsAlive = false;
-                }
-                else
-                {
-                    Position += Direction * LinearVelocity;
-                }
+                IsVisible = false;
+                IsActive = false;
+                IsAlive = false;
+            }
+            else
+            {
+                Position += Direction * LinearVelocity;
             }
         }
     }
