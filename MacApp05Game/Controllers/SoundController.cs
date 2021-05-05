@@ -28,8 +28,8 @@ namespace MacApp05Game.Controllers
         {
             Songs.Add("Adventure",content.Load<Song>("audio/Adventures"));            
 
-            SoundEffects.Add("Coin", content.Load<SoundEffect>("audio/Coins"));
-            SoundEffects.Add("Flame", content.Load<SoundEffect>("audio/flame"));
+            //SoundEffects.Add("Coin", content.Load<SoundEffect>("audio/Coins"));
+            //SoundEffects.Add("Flame", content.Load<SoundEffect>("audio/flame"));
         }
         /// <summary>
         /// Get a sound effect from the collection.

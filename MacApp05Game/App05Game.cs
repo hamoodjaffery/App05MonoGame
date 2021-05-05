@@ -1,4 +1,5 @@
-﻿using MacApp05Game.Controllers;
+﻿using System;
+using MacApp05Game.Controllers;
 using MacApp05Game.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -36,6 +37,7 @@ namespace MacApp05Game
 
         private int score;
         private int health;
+        private Random randomGenerator;
         
         private readonly DiamondsController diamondsController;
         private BulletController bulletController;
@@ -69,6 +71,7 @@ namespace MacApp05Game
 
             graphicsDevice = graphicsManager.GraphicsDevice;
 
+            randomGenerator = new Random();
             score = 0;
             health = 100;
 
@@ -133,7 +136,8 @@ namespace MacApp05Game
             };
 
             contoller.AppendAnimationsTo(playerSprite);
-            bulletController = new BulletController(Content);
+            Texture2D bulletImage = Content.Load<Texture2D>("images/bullet");
+            bulletController = new BulletController(bulletImage);
             playerSprite.bulletController = bulletController;
 
         }
@@ -199,12 +203,27 @@ namespace MacApp05Game
             diamondsController.Update(gameTime);
             diamondsController.HasCollided(playerSprite);
             bulletController.UpdateBullets(gameTime);
-            if (bulletController.HasCollided(enemySprite))
+
+            bulletController.HasCollided(enemySprite);
+
+            if (!enemySprite.IsAlive)
             {
-                SetupEnemy();
-            }
+                ReactivateEnemy();
+            }    
+            
 
             base.Update(gameTime);
+        }
+
+        private void ReactivateEnemy()
+        {
+            //int x = randomGenerator.Next(800) + 100;
+            //int y = randomGenerator.Next(500) + 100;
+
+            enemySprite.Position = new Vector2(1000,200);
+            enemySprite.IsAlive = true;
+            enemySprite.IsAlive = true;
+            enemySprite.IsActive = true;
         }
 
         // <summary>
