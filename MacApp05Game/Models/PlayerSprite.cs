@@ -17,9 +17,9 @@ namespace MacApp05Game.Models
     /// although more can be added to the Dictionary
     /// It updates and draws the current animation.
     /// </summary>
-    /// <authors>
-    /// Derek Peacock & Andrei Cruceru
-    /// </authors>
+    /// <author>
+    /// Hamood Jaffery
+    /// </author>
     public class PlayerSprite : Sprite
     {
         private readonly MovementController movement;

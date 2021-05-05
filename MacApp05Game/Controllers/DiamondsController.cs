@@ -11,20 +11,19 @@ namespace MacApp05Game.Controllers
 {
     public enum DiamondColours
     {
-        grey = 50,
         blue = 100,
         red = 200,
         violet = 500
     }
 
     /// <summary>
-    /// This class creates a list of coins which
-    /// can be updated and drawn and checked for
+    /// This class creates three different colour diamond
+    /// which can be updated and drawn and checked for
     /// collisions with the player sprite
     /// </summary>
-    /// <authors>
-    /// Derek Peacock & Andrei Cruceru
-    /// </authors>
+    /// <author>
+    /// Hamood Jaffery
+    /// </author>
     public class DiamondsController
     {
         public const float MaxTime = 3.0f;
@@ -36,7 +35,6 @@ namespace MacApp05Game.Controllers
 
         private readonly List<Sprite> Diamonds;
 
-        public Texture2D greyDiamond { get; set; }
         public Texture2D redDiamond { get; set; }
         public Texture2D blueDiamond { get; set; }
         public Texture2D violetDiamond { get; set; }
@@ -45,18 +43,15 @@ namespace MacApp05Game.Controllers
 
         private ContentManager content;
 
-        private double timer;
-
         public DiamondsController()
         {
             Diamonds = new List<Sprite>();
         }
 
         /// <summary>
-        /// Create an animated sprite of a copper coin
-        /// which could be collected by the player for a score
+        /// Create a list of diamonds and store the diamond images
         /// </summary>
-        public void CreateDiamonds(GraphicsDevice graphics, ContentManager content)
+        public void CreateDiamonds(ContentManager content)
         {
             //diamondEffect = SoundController.GetSoundEffect("Diamondpickup");
 
@@ -68,6 +63,10 @@ namespace MacApp05Game.Controllers
 
         }
 
+        /// <summary>
+        /// Generate three different colour diamonds at random positions
+        /// </summary>
+        /// <param name="colour"></param>
         private void CreateDiamond(DiamondColours colour)
         {
             if(colour == DiamondColours.red)
@@ -82,10 +81,6 @@ namespace MacApp05Game.Controllers
             {
                 diamondImage = content.Load<Texture2D>("images/diamond blue");
             }
-            else if (colour == DiamondColours.grey)
-            {
-                diamondImage = content.Load<Texture2D>("images/diamond");
-            }
 
             int x = generator.Next(1000) + 100;
             int y = generator.Next(520) + 100;
@@ -96,6 +91,11 @@ namespace MacApp05Game.Controllers
             Diamonds.Add(sprite);
         }
 
+        /// <summary>
+        /// This method checks if the diamond is picked up/collided
+        /// by the player.
+        /// </summary>
+        /// <param name="player"></param>
         public void HasCollided(AnimatedPlayer player)
         {
             foreach (Sprite diamond in Diamonds)
@@ -107,25 +107,38 @@ namespace MacApp05Game.Controllers
                     diamond.IsActive = false;
                     diamond.IsAlive = false;
                     diamond.IsVisible = false;
-
-                    
                 }
             }
         }
 
-        /// <summary>
-        /// When the timer has reached zero from say 2 seconds
-        /// then create new diamond of random colour.
-        /// </summary>
-        /// <param name="gameTime"></param>
+       /// <summary>
+       /// This method creates an array of diamonds to delete that will be
+       /// picked up by the player and then empty that array.
+       /// It will also regenerate the diamonds at random position
+       /// once the player has picked up
+       /// the available diamonds
+       /// </summary>
+       /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
+            List<Sprite> diamondsToDelete = new List<Sprite>();
+
             // decrease timer by gametime
             // when = 0 call create diamond
-
             foreach (Sprite diamond in Diamonds)
             {
                 diamond.Update(gameTime);
+                if (diamond.IsAlive == false)
+                {
+                    diamondsToDelete.Add(diamond);
+                }
+            }
+
+            Diamonds.RemoveAll(x => diamondsToDelete.Contains(x));
+
+            if (Diamonds.Count == 0)
+            {
+                CreateDiamonds(content);
             }
         }
 

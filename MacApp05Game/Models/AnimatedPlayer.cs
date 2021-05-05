@@ -10,13 +10,18 @@ namespace MacApp05Game.Models
     /// directions, up, down, left and right
     /// </summary>
     /// <authors>
-    /// Derek Peacock & Andrei Cruceru
-    /// </authors>
+    /// Hamood Jaffery
+    /// </author>
     public class AnimatedPlayer : AnimatedSprite
     {
         public bool CanWalk { get; set; }
+        public BulletController bulletController { get; set; }
+        private KeyboardState Previous;
+        private KeyboardState Current;
+
 
         private readonly MovementController movement;
+
 
         public AnimatedPlayer() : base()
         {
@@ -32,7 +37,8 @@ namespace MacApp05Game.Models
         public override void Update(GameTime gameTime)
         {
             KeyboardState keyState = Keyboard.GetState();
-
+            Previous = Current;
+            Current = keyState;
             IsActive = false;
 
             Vector2 newDirection = movement.ChangeDirection(keyState);
@@ -44,6 +50,12 @@ namespace MacApp05Game.Models
             }
 
             if (CanWalk) Walk();
+
+            if (Current.IsKeyDown(Keys.Space) &&
+                Previous.IsKeyUp(Keys.Space) && (bulletController != null))
+            {
+                bulletController.AddBullet(this);
+            }
 
             base.Update(gameTime);
         }
