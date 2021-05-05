@@ -92,7 +92,7 @@ namespace MacApp05Game
             // Load Music and SoundEffects
 
             SoundController.LoadContent(Content);
-            SoundController.PlaySong("Adventure");
+            //SoundController.PlaySong("Adventure");
 
             // Load Fonts
 
@@ -136,6 +136,7 @@ namespace MacApp05Game
             };
 
             contoller.AppendAnimationsTo(playerSprite);
+            
             Texture2D bulletImage = Content.Load<Texture2D>("images/bullet");
             bulletController = new BulletController(bulletImage);
             playerSprite.bulletController = bulletController;
@@ -186,7 +187,10 @@ namespace MacApp05Game
 
             // Update Chase Game
 
-            enemySprite.Direction = new Vector2(playerSprite.Position.X - enemySprite.Position.X, playerSprite.Position.Y - enemySprite.Position.Y); 
+            enemySprite.Direction = 
+                new Vector2(playerSprite.Position.X - enemySprite.Position.X, 
+                            playerSprite.Position.Y - enemySprite.Position.Y);
+            
             playerSprite.Update(gameTime);
             enemySprite.Update(gameTime);
 
@@ -195,9 +199,11 @@ namespace MacApp05Game
             {
                 playerSprite.IsActive = false;
                 playerSprite.IsAlive = false;
+                playerSprite.IsVisible = false;
+
                 enemySprite.IsActive = false;
                 enemySprite.IsVisible = false;
-                playerSprite.IsVisible = false;
+                enemySprite.IsAlive = false;
             }
 
             diamondsController.Update(gameTime);
@@ -221,8 +227,11 @@ namespace MacApp05Game
             //int y = randomGenerator.Next(500) + 100;
 
             enemySprite.Position = new Vector2(1000,200);
+            enemySprite.Direction = new Vector2(-1, 0);
+            enemySprite.Speed = 0.5f;
+
             enemySprite.IsAlive = true;
-            enemySprite.IsAlive = true;
+            enemySprite.IsVisible = true;
             enemySprite.IsActive = true;
         }
 

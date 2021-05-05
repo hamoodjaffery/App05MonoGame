@@ -33,7 +33,8 @@ namespace MacApp05Game.Controllers
         {
             foreach (Bullet bullet in Bullets)
             {
-                bullet.Update(gameTime);
+                if(bullet.IsActive)
+                    bullet.Update(gameTime);
             }
         }
 
@@ -41,7 +42,8 @@ namespace MacApp05Game.Controllers
         {
             foreach (Bullet bullet in Bullets)
             {
-                bullet.Draw(spriteBatch);
+                if(bullet.IsVisible)
+                    bullet.Draw(spriteBatch);
             }
         }
 
@@ -74,7 +76,7 @@ namespace MacApp05Game.Controllers
         {
             foreach (Bullet bullet in Bullets)
             {
-                if (bullet.HasCollided(enemy))
+                if (bullet.IsActive && bullet.HasCollided(enemy))
                 {
                     if (killEffect != null)
                         killEffect.Play();
@@ -84,6 +86,8 @@ namespace MacApp05Game.Controllers
                     enemy.IsVisible = false;
 
                     bullet.IsVisible = false;
+                    bullet.IsActive = false;
+                    bullet.IsAlive = false;
                 }
             }
 
