@@ -92,7 +92,7 @@ namespace MacApp05Game
             // Load Music and SoundEffects
 
             SoundController.LoadContent(Content);
-            SoundController.PlaySong("Adventure");
+            //SoundController.PlaySong("Adventure");
 
             // Load Fonts
 
@@ -259,8 +259,15 @@ namespace MacApp05Game
             //restartButton.Draw(spriteBatch);
             //quitButton.Draw(spriteBatch);
 
-            if (!playerSprite.IsAlive) {
+            if (!playerSprite.IsAlive)
+            {
                 spriteBatch.DrawString(verdanaFont, "LOSER!", new Vector2(200, 200), Color.Yellow);
+                spriteBatch.End();
+            }
+
+            else if (playerSprite.IsAlive && playerSprite.score >= 200)
+            {
+                spriteBatch.DrawString(verdanaFont, "WINNER", new Vector2(200, 200), Color.Yellow);
                 spriteBatch.End();
             }
             else

@@ -28,7 +28,7 @@ namespace MacApp05Game.Controllers
         {
             Songs.Add("Adventure",content.Load<Song>("audio/Adventures"));            
 
-            //SoundEffects.Add("Coin", content.Load<SoundEffect>("audio/Coins"));
+            //SoundEffects.Add("Diamond", content.Load<SoundEffect>("audio/Diamondpickup"));
             //SoundEffects.Add("Flame", content.Load<SoundEffect>("audio/flame"));
         }
         /// <summary>
