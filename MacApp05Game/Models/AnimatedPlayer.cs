@@ -17,14 +17,14 @@ namespace MacApp05Game.Models
         public bool CanWalk { get; set; }
         public BulletController bulletController { get; set; }
 
-        //private const double X = 0.1;
+        private const double healthLoss = 0.1;
         private KeyboardState Previous;
         private KeyboardState Current;
 
 
         private readonly MovementController movement;
         internal int score = 0;
-        internal int health = 100;
+        public double health { get; set; } = 100;
 
         public AnimatedPlayer() : base()
         {
@@ -58,7 +58,13 @@ namespace MacApp05Game.Models
                 IsActive = true;
 
                 //health--;
-                health -= 1;
+                health -= healthLoss;
+
+                if(health <= 0)
+                {
+                    IsActive = false;
+                    IsAlive = false;
+                }
             }
 
             if (CanWalk) Walk();

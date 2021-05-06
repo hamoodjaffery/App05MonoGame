@@ -92,7 +92,7 @@ namespace MacApp05Game
             // Load Music and SoundEffects
 
             SoundController.LoadContent(Content);
-            //SoundController.PlaySong("Adventure");
+            SoundController.PlaySong("Adventure");
 
             // Load Fonts
 
@@ -186,6 +186,15 @@ namespace MacApp05Game
                 Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
 
             // Update Chase Game
+
+            Vector2 distance = playerSprite.Position - enemySprite.Position;
+            if(distance.X >= 200 || distance.Y >= 200)
+            {
+                // if true enemy is outside of field of view
+                // so you could move randomly isntead
+                // because he has stepped to far away
+                // You can pretend that enemy can't see the player
+            }
 
             enemySprite.Direction = 
                 new Vector2(playerSprite.Position.X - enemySprite.Position.X, 
@@ -288,7 +297,7 @@ namespace MacApp05Game
             Vector2 topCentre = new Vector2((HD_Width / 2 - gameSize.X / 2), 4);
             spriteBatch.DrawString(arialFont, game, topCentre, Color.White);
 
-            string healthText = $"Health = {playerSprite.health}%";
+            string healthText = $"Health = {playerSprite.health:0}%";
             Vector2 healthSize = arialFont.MeasureString(healthText);
             Vector2 topRight = new Vector2(HD_Width - (healthSize.X + 4), 4);
             spriteBatch.DrawString(arialFont, healthText, topRight, Color.White);

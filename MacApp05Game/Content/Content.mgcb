@@ -26,11 +26,11 @@
 /processorParam:Quality=Best
 /build:audio/Adventures.mp3
 
-#begin audio/Diamondpickup.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
+#begin audio/Diamondpickup.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
 /processorParam:Quality=Best
-/build:audio/Diamondpickup.wav
+/build:audio/Diamondpickup.mp3
 
 #begin audio/Gamesound.wav
 /importer:WavImporter

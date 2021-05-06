@@ -53,7 +53,7 @@ namespace MacApp05Game.Controllers
         /// </summary>
         public void CreateDiamonds(ContentManager content)
         {
-            //diamondEffect = SoundController.GetSoundEffect("Diamondpickup");
+            diamondEffect = SoundController.GetSoundEffect("Diamondpickup");
 
             this.content = content;
 
@@ -108,7 +108,12 @@ namespace MacApp05Game.Controllers
                     diamond.IsAlive = false;
                     diamond.IsVisible = false;
 
-                    player.health += 100;
+                    player.health += 10;
+
+                    if(player.health >= 100)
+                    {
+                        player.health = 100;
+                    }
                 }
             }
         }
