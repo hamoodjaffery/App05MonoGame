@@ -107,6 +107,8 @@ namespace MacApp05Game.Controllers
                     diamond.IsActive = false;
                     diamond.IsAlive = false;
                     diamond.IsVisible = false;
+
+                    player.health += 100;
                 }
             }
         }
@@ -121,20 +123,14 @@ namespace MacApp05Game.Controllers
        /// <param name="gameTime"></param>
         public void Update(GameTime gameTime)
         {
-            List<Sprite> diamondsToDelete = new List<Sprite>();
-
             // decrease timer by gametime
             // when = 0 call create diamond
             foreach (Sprite diamond in Diamonds)
             {
                 diamond.Update(gameTime);
-                if (diamond.IsAlive == false)
-                {
-                    diamondsToDelete.Add(diamond);
-                }
             }
 
-            Diamonds.RemoveAll(x => diamondsToDelete.Contains(x));
+            Diamonds.RemoveAll(x => !x.IsAlive);
 
             if (Diamonds.Count == 0)
             {

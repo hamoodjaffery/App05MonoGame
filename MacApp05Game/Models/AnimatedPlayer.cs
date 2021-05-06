@@ -16,13 +16,15 @@ namespace MacApp05Game.Models
     {
         public bool CanWalk { get; set; }
         public BulletController bulletController { get; set; }
+
+        //private const double X = 0.1;
         private KeyboardState Previous;
         private KeyboardState Current;
 
 
         private readonly MovementController movement;
-        internal readonly object score;
-        internal readonly object health;
+        internal int score = 0;
+        internal int health = 100;
 
         public AnimatedPlayer() : base()
         {
@@ -37,6 +39,12 @@ namespace MacApp05Game.Models
         /// </summary>
         public override void Update(GameTime gameTime)
         {
+            if (health == 0)
+            {
+                IsActive = false;
+                IsAlive = false;
+                IsVisible = false;
+            }
             KeyboardState keyState = Keyboard.GetState();
             Previous = Current;
             Current = keyState;
@@ -48,6 +56,9 @@ namespace MacApp05Game.Models
             {
                 Direction = newDirection;
                 IsActive = true;
+
+                //health--;
+                health -= 1;
             }
 
             if (CanWalk) Walk();
@@ -71,16 +82,21 @@ namespace MacApp05Game.Models
             if (Animations.Count >= 4)
             {
                 if (Direction.X > 0 && Direction.Y < Direction.X)
+                {
                     Animation = Animations["Right"];
-
+                }
                 else if (Direction.Y > 0 && Direction.X < Direction.Y)
+                {
                     Animation = Animations["Down"];
-
+                }
                 else if (Direction.X < 0 && Direction.X < Direction.Y)
+                {
                     Animation = Animations["Left"];
-
+                }
                 else if (Direction.Y < 0 && Direction.Y < Direction.X)
+                {
                     Animation = Animations["Up"];
+                }
             }
         }
     }

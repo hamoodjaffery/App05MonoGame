@@ -36,6 +36,8 @@ namespace MacApp05Game.Controllers
                 if(bullet.IsActive)
                     bullet.Update(gameTime);
             }
+
+            Bullets.RemoveAll(x => !x.IsAlive);
         }
 
         public void DrawBullets(SpriteBatch spriteBatch)
@@ -60,7 +62,6 @@ namespace MacApp05Game.Controllers
             bullet.Position = new Vector2(
                 player.Position.X + 60, player.Position.Y + 40);
 
-            bullet.LifeSpan = 2f; // seconds
             bullet.Parent = player;
 
             Bullets.Add(bullet);
@@ -88,6 +89,10 @@ namespace MacApp05Game.Controllers
                     bullet.IsVisible = false;
                     bullet.IsActive = false;
                     bullet.IsAlive = false;
+
+                    //bullet.Parent.score++;
+                    //bullet.Parent.score = bullet.Parent.score + 1000;
+                    bullet.Parent.score += 20;
                 }
             }
 

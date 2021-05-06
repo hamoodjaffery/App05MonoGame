@@ -163,7 +163,7 @@ namespace MacApp05Game
 
                 Position = new Vector2(1000, 200),
                 Direction = new Vector2(-1, 0),
-                Speed = 0.9f,
+                Speed = 0.5f,
 
                 Rotation = MathHelper.ToRadians(0),
             };
@@ -279,7 +279,7 @@ namespace MacApp05Game
         public void DrawGameStatus(SpriteBatch spriteBatch)
         {
             Vector2 topLeft = new Vector2(4, 4);
-            string status = $"Score = {playerSprite.score:##0}";
+            string status = $"Score = {playerSprite.score}";
 
             spriteBatch.DrawString(arialFont, status, topLeft, Color.White);
 
