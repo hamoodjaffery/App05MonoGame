@@ -11,9 +11,9 @@ namespace MacApp05Game.Controllers
     /// rows and columns and breaks it up into separate
     /// animations one per row.
     /// </summary>
-    /// <authors>
-    /// Derek Peacock & Andrei Cruceru
-    /// </authors>
+    /// <author>
+    /// Hamood Jaffery
+    /// </author>
     public class AnimationController
     {
         // Original SpriteSheet rows * cols or frames

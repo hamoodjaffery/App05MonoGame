@@ -10,9 +10,9 @@ namespace MacApp05Game.Controllers
     /// by frame returning the current frame in
     /// the update method as a source Rectangle
     /// </summary>
-    /// <authors>
-    /// Derek Peacock & Andrei Cruceru
-    /// </authors>
+    /// <author>
+    /// Hamood Jaffery
+    /// </author>
     public class Animation
     {
         public string Name { get; private set; }

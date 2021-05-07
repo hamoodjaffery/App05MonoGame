@@ -13,6 +13,8 @@ namespace MacApp05Game
     /// moves around the screen, collecting diamonds while trying
     /// to avoid the dog (enemy) to harm it by firing bullets
     /// at the dog or by running away from the dog!
+    /// Hamood Jaffery
+    /// </author>
     /// </summary>
     public class App05Game : Game
     {
@@ -49,6 +51,10 @@ namespace MacApp05Game
         private Button quitButton;
         #endregion
 
+        /// <summary>
+        /// This method will load the default graphics, contents, controllers
+        /// and other necessary objects as the game starts.
+        /// </summary>
         public App05Game()
         {
             graphicsManager = new GraphicsDeviceManager(this);
@@ -230,6 +236,10 @@ namespace MacApp05Game
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// This method will recreate the enemy
+        /// at random positions.
+        /// </summary>
         private void ReactivateEnemy()
         {
             //int x = randomGenerator.Next(800) + 100;
