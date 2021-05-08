@@ -53,7 +53,6 @@ namespace MacApp05Game.Controllers
         /// </summary>
         public void CreateDiamonds(ContentManager content)
         {
-            //diamondEffect = SoundController.GetSoundEffect("Diamond");
 
             this.content = content;
 

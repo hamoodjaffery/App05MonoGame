@@ -57,7 +57,6 @@ namespace MacApp05Game.Models
                 Direction = newDirection;
                 IsActive = true;
 
-                //health--;
                 health -= healthLoss;
 
                 if(health <= 0)

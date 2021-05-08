@@ -23,7 +23,7 @@ namespace MacApp05Game.Models
         private Rectangle sourceRectangle;
 
         public AnimatedSprite() : base()
-        {            
+        {           
         }
 
         public void PlayAnimation(string key)

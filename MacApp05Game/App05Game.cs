@@ -35,7 +35,6 @@ namespace MacApp05Game
         private SpriteFont verdanaFont;
 
         private Texture2D backgroundImage;
-        private SoundEffect flameEffect;
 
         private int score;
         private int health;
@@ -46,9 +45,6 @@ namespace MacApp05Game
 
         private AnimatedPlayer playerSprite;
         private AnimatedSprite enemySprite;
-
-        private Button restartButton;
-        private Button quitButton;
         #endregion
 
         /// <summary>
@@ -191,7 +187,7 @@ namespace MacApp05Game
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
                 Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
 
-            // Update Chase Game
+            // Update Chase Game    
 
             Vector2 distance = playerSprite.Position - enemySprite.Position;
             if(distance.X >= 200 || distance.Y >= 200)

@@ -90,8 +90,6 @@ namespace MacApp05Game.Controllers
                     bullet.IsActive = false;
                     bullet.IsAlive = false;
 
-                    //bullet.Parent.score++;
-                    //bullet.Parent.score = bullet.Parent.score + 1000;
                     bullet.Parent.score += 20;
                 }
             }
