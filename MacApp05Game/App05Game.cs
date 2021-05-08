@@ -242,8 +242,6 @@ namespace MacApp05Game
         /// </summary>
         private void ReactivateEnemy()
         {
-            //int x = randomGenerator.Next(800) + 100;
-            //int y = randomGenerator.Next(500) + 100;
 
             enemySprite.Position = new Vector2(1000,200);
             enemySprite.Direction = new Vector2(-1, 0);
@@ -265,9 +263,6 @@ namespace MacApp05Game
             spriteBatch.Begin();
 
             spriteBatch.Draw(backgroundImage, Vector2.Zero, Color.White);
-
-            //restartButton.Draw(spriteBatch);
-            //quitButton.Draw(spriteBatch);
 
             if (!playerSprite.IsAlive)
             {
