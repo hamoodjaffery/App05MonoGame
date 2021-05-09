@@ -31,8 +31,6 @@ namespace MacApp05Game.Controllers
 
         private Random generator = new Random();
 
-        private SoundEffect diamondEffect;
-
         private readonly List<Sprite> Diamonds;
 
         public Texture2D redDiamond { get; set; }
@@ -53,13 +51,11 @@ namespace MacApp05Game.Controllers
         /// </summary>
         public void CreateDiamonds(ContentManager content)
         {
-
             this.content = content;
 
             CreateDiamond(DiamondColours.red);
             CreateDiamond(DiamondColours.blue);
             CreateDiamond(DiamondColours.violet);
-
         }
 
         /// <summary>
@@ -101,8 +97,6 @@ namespace MacApp05Game.Controllers
             {
                 if (diamond.HasCollided(player) && diamond.IsAlive)
                 {
-                    //diamondEffect.Play();
-
                     diamond.IsActive = false;
                     diamond.IsAlive = false;
                     diamond.IsVisible = false;

@@ -39,7 +39,7 @@ namespace MacApp05Game
         private int score;
         private int health;
         private Random randomGenerator;
-        
+
         private readonly DiamondsController diamondsController;
         private BulletController bulletController;
 
@@ -94,7 +94,7 @@ namespace MacApp05Game
             // Load Music and SoundEffects
 
             SoundController.LoadContent(Content);
-            //SoundController.PlaySong("Adventure");
+            SoundController.PlaySong("Adventure");
 
             // Load Fonts
 
@@ -138,7 +138,7 @@ namespace MacApp05Game
             };
 
             contoller.AppendAnimationsTo(playerSprite);
-            
+
             Texture2D bulletImage = Content.Load<Texture2D>("images/bullet");
             bulletController = new BulletController(bulletImage);
             playerSprite.bulletController = bulletController;
@@ -184,27 +184,30 @@ namespace MacApp05Game
         /// </param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || 
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
                 Keyboard.GetState().IsKeyDown(Keys.Escape)) Exit();
 
-            // Update Chase Game    
+            // Update Chase Game
 
-            Vector2 distance = playerSprite.Position - enemySprite.Position;
-            if(distance.X >= 200 || distance.Y >= 200)
-            {
-                // if true enemy is outside of field of view
-                // so you could move randomly isntead
-                // because he has stepped to far away
-                // You can pretend that enemy can't see the player
-            }
+            UpdatePlayers(gameTime);
+            UpdateDiamonds(gameTime);
+            UpdateBullets(gameTime);
 
-            enemySprite.Direction = 
-                new Vector2(playerSprite.Position.X - enemySprite.Position.X, 
+            base.Update(gameTime);
+        }
+
+        /// <summary>
+        /// This method defines the position of the
+        /// enemy sprite (follows the direction of player sprite),
+        /// and will update the game if the player and
+        /// enemy sprites collides with each other.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void UpdatePlayers(GameTime gameTime)
+        {
+            enemySprite.Direction =
+                new Vector2(playerSprite.Position.X - enemySprite.Position.X,
                             playerSprite.Position.Y - enemySprite.Position.Y);
-            
-            playerSprite.Update(gameTime);
-            enemySprite.Update(gameTime);
-
 
             if (playerSprite.HasCollided(enemySprite))
             {
@@ -217,19 +220,37 @@ namespace MacApp05Game
                 enemySprite.IsAlive = false;
             }
 
-            diamondsController.Update(gameTime);
-            diamondsController.HasCollided(playerSprite);
-            bulletController.UpdateBullets(gameTime);
+            playerSprite.Update(gameTime);
+            enemySprite.Update(gameTime);
+        }
 
+        /// <summary>
+        /// This method will update the diamond status
+        /// as soon as the player sprite picks up (collides)
+        /// with the diamond object.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void UpdateDiamonds(GameTime gameTime)
+        {
+            diamondsController.HasCollided(playerSprite);
+            diamondsController.Update(gameTime);
+        }
+
+        /// <summary>
+        /// THis method will update the bullets status
+        /// as soon as the bullet hits (collides) with the
+        /// enemy sprite.
+        /// </summary>
+        /// <param name="gameTime"></param>
+        private void UpdateBullets(GameTime gameTime)
+        {
             bulletController.HasCollided(enemySprite);
 
             if (!enemySprite.IsAlive)
             {
                 ReactivateEnemy();
-            }    
-            
-
-            base.Update(gameTime);
+            }
+            bulletController.UpdateBullets(gameTime);
         }
 
         /// <summary>
@@ -273,7 +294,6 @@ namespace MacApp05Game
             }
             else
             {
-
                 playerSprite.Draw(spriteBatch);
                 bulletController.DrawBullets(spriteBatch);
                 diamondsController.Draw(spriteBatch);
